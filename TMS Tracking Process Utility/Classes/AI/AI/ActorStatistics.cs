@@ -12,10 +12,10 @@ namespace BBDS.Classes.AI
     public class ActorStatistics
     {
 
-        public int Speed { get; set; }
-        public float VisionDistance { get; set; }
-        public float TurnRate { get; set; }
-        public float Mass { get; set; }
+        //public int Speed { get; set; }
+        //public float VisionDistance { get; set; }
+        //public float TurnRate { get; set; }
+        //public float Mass { get; set; }
 		
 		public Dictionary<string, object> OtherStats = new Dictionary<string, object>();
         

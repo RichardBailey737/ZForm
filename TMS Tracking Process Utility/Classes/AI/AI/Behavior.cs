@@ -12,6 +12,7 @@ namespace BBDS.Classes.AI
         {
             this.Parent = Parent;
 			this.ParentActor = Parent.Parent;
+            this.ActionQueue = new List<ActionTransition>();
         }
 
         public ActionPool ActionStorage { get; private set; }
@@ -19,6 +20,57 @@ namespace BBDS.Classes.AI
         public ActionBase CurrentAction { get; private set; }
         public ActorIntention Parent { get; private set; }
 		public Actor ParentActor { get; private set; }
+
+
+        private float? WaitUntilTime = null;
+        private List<ActionTransition> ActionQueue;
+
+        /// <summary>
+        /// Gets a value indicating whether the wait time is over.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if wait over; otherwise, <c>false</c>.
+        /// </value>
+        public bool WaitOver
+        {
+            get
+            {
+                if (WaitUntilTime.HasValue)
+                {
+                    if (Globals.CurrentTime >= WaitUntilTime)
+                    {
+                        WaitUntilTime = null;
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                return true;
+            }
+        }
+
+        public void Add(ActionTransition ActionToQueue) {
+            ActionQueue.Add(ActionToQueue);
+        }
+
+        public void PriorityAdd(ActionTransition ActionToQueue)
+        {
+            for (int i = 0; i < ActionQueue.Count; i++)
+			{
+                if (ActionToQueue.Priority > ActionQueue[i].Priority) ActionQueue.Insert(i, ActionToQueue);
+            }
+        }
+
+        /// <summary>
+        /// Sets a wait time value.  When the wait time is over, the WaitOver property returns true;
+        /// </summary>
+        /// <param name='WaitTime'>
+        /// Wait time in seconds.
+        /// </param>
+        public void WaitUntil(float WaitTime)
+        {
+            WaitUntilTime = Globals.CurrentTime + WaitTime;
+        }
 		
         public void Initalize()
         {
@@ -26,15 +78,36 @@ namespace BBDS.Classes.AI
             ActionStorage.Initalize();
         }
 
+        IEnumerable<ActionTransition> updateReturn;
+        IEnumerator<ActionTransition> iterator;
+        ActionTransition returnedTransition;
+
+
         public void Update()
         {
-            if (CurrentAction != null)
+            if (CurrentAction != null && WaitOver)
             {
-                ActionTransition returnedTransition = CurrentAction.Update();
+                if (updateReturn == null)
+                {
+                    updateReturn = CurrentAction.Update();
+                    iterator = updateReturn.GetEnumerator();
+                }
+
+                iterator.MoveNext();
+                returnedTransition = iterator.Current;
+
                 if (returnedTransition != null)
                 {
                     ProcessTransition(returnedTransition);
                 }
+
+
+            }
+            else if (CurrentAction == null && ActionQueue.Count > 0)
+            {
+                returnedTransition = ActionQueue[0];
+                ActionQueue.RemoveAt(0);
+                ProcessTransition(returnedTransition);
             }
         }
 
@@ -55,6 +128,9 @@ namespace BBDS.Classes.AI
                 case TransitionType.End:
                     CurrentAction.End();
                     CurrentAction = null;
+                    break;
+                case TransitionType.Wait:
+                    WaitUntil((float)Convert.ToDouble(transition.Data));
                     break;
 
             }

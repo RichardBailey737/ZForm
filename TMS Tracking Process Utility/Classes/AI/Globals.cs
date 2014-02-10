@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BBDS.Classes.AI;
-using UnityEngine;
+//using UnityEngine;
 
 namespace BBDS.Classes
 {
@@ -13,8 +13,10 @@ namespace BBDS.Classes
 
         public static ActorCollection Actors { get { return mActors; } }
 
-        public static float CurrentTime { get { return Time.time ; } }
-        public static float DeltaTIme { get { return Time.deltaTime; } }
+        //public static float CurrentTime { get { return Time.time ; } }
+        //public static float DeltaTIme { get { return Time.deltaTime; } }
+        public static float CurrentTime { get { return GameProject.GameLoop.GameTime; } }
+        public static float DeltaTime { get { return GameProject.GameLoop.DeltaTime; } } 
 
         private static int MaxID = 0;
         public static int GenerateID()

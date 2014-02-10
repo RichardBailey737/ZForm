@@ -7,14 +7,14 @@ namespace BBDS.Classes.AI
 {
     public class ActionTransition
     {
-		
-
-		
+        	
         public ActionBase FromAction { get; set; }
         public string ToAction { get; set; }
         public string Reason { get; set; }
         public TransitionType Transition { get; set; }
         public object Data { get; set; }
+
+        public Int16 Priority { get; set; }
     }
 
     public enum TransitionType
@@ -22,6 +22,7 @@ namespace BBDS.Classes.AI
         Change = 1,
         Suspend = 2, 
         Resume = 3,
-        End = 4
+        End = 4,
+        Wait = 5
     }
 }

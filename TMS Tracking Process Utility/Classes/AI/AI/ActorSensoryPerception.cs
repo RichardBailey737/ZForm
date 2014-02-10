@@ -18,19 +18,7 @@ namespace BBDS.Classes.AI
 
         public ISensoryProxy SensoryPerceptionProxy { get; private set; }
 
-        public SenseQuery SeesZombie()
-        {
-            List<Actor> SeenActors = SensoryPerceptionProxy.CanSee(ParentActor.Statistics.VisionDistance);
-            if (SeenActors.Count > 0)
-            {
-                return new SenseQuery { SeesSomething = true, HearsSomething = false, IdentifiedPercent = 1f, SensesSomething = true, SensedActors = SeenActors };
-            }
-            else
-            {
-                return new SenseQuery();
-            }
-            
-        }
+      
 
         public Actor ParentActor { get; private set; }
 

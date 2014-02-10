@@ -28,7 +28,12 @@ namespace BBDS.Classes.AI
             behaviors = new List<Behavior>();
             behaviors.Add(new Behavior(this));
             this[0].Initalize();
+            behaviors.Add(new Behavior(this));
+            this[1].Initalize();
         }
+
+        public Behavior Primary { get { return behaviors[0]; } }
+        public Behavior Seconday { get { return behaviors[1]; } }
 
         public void Update()
         {

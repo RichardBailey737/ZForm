@@ -15,39 +15,8 @@ namespace BBDS.Classes.AI
 
         public Behavior Parent { get; private set; }
         public Actor ParentActor { get; private set; }
-		
-		private float? WaitUntilTime = null;
-		
-		/// <summary>
-		/// Gets a value indicating whether the wait time is over.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if wait over; otherwise, <c>false</c>.
-		/// </value>
-		public bool WaitOver { get 
-			{
-				if (WaitUntilTime.HasValue) {
-					if (Globals.CurrentTime >= WaitUntilTime) 
-					{
-						WaitUntilTime = null;
-						return true;
-					}
-				    else
-						return false;
-				}
-				return true;
-			}
-		}
-	
-		/// <summary>
-		/// Sets a wait time value.  When the wait time is over, the WaitOver property returns true;
-		/// </summary>
-		/// <param name='WaitTime'>
-		/// Wait time in seconds.
-		/// </param>
-		public void WaitUntil(float WaitTime) {
-			WaitUntilTime = Globals.CurrentTime + WaitTime;
-		}
+        public ActionTransition actionTransition;
+
 
         public virtual ActionTransition Start(ActionTransition PreviousAction)
         {
@@ -57,13 +26,14 @@ namespace BBDS.Classes.AI
 
         }
 
-        public virtual ActionTransition Update()
+        public virtual System.Collections.Generic.IEnumerable<ActionTransition> Update()
         {
             return null;
         }
 
         public virtual void End()
         {
+            actionTransition = null;
             
         }
 

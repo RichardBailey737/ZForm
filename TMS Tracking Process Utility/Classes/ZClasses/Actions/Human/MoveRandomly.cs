@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BBDS.Classes.AI;
 
-namespace BBDS.Classes.AI.Actions.Human
+namespace TMS_Tracking_Process_Utility.Classes.Actions
 {
     public class MoveRandomly: ActionBase
     {
         public MoveRandomly(Behavior Parent) : base(Parent)
         {
-            
+            loco = (CitizenLocomotion)ParentActor.Locomotion;
         }
         public override ActionTransition Start(ActionTransition PreviousAction)
         {
+            loco.GenerateRandomPath();
             //ParentActor.Locomotion.LocomotionProxy.SetRandomDestination();
             return null;
         }
@@ -27,9 +29,15 @@ namespace BBDS.Classes.AI.Actions.Human
             return base.Suspend(PreviousAction);
         }
 
-        
-        public override ActionTransition Update()
+
+        CitizenLocomotion loco;
+
+        public override IEnumerable<ActionTransition> Update()
         {
+            if (!loco.Moving())
+            {
+                loco.GenerateRandomPath();
+            }
 //            if (ParentActor.Locomotion.LocomotionProxy.GoToTarget(ParentActor.Statistics.Speed)) {
 //               ParentActor.Locomotion.LocomotionProxy.SetRandomDestination();
 //            }
@@ -43,7 +51,7 @@ namespace BBDS.Classes.AI.Actions.Human
 //            {
 //                return null;
 //            }
-			return null;
+			yield return null;
         }
 
         public override void End()

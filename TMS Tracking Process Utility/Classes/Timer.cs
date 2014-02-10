@@ -6,14 +6,14 @@ using System.Runtime.InteropServices;
 
 namespace GameProject
 {
-    public class Timer
+    public class GameTimer
     {
         [DllImport("kernel32.dll")]
         private static extern long GetTickCount();
 
         private long StartTick = 0;
 
-        public Timer()
+        public GameTimer()
         {
             Reset();
         }

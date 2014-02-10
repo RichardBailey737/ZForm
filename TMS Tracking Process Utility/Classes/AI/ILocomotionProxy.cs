@@ -10,14 +10,6 @@ namespace BBDS.Classes
     {
         void Initalize();
         Actor ParentActor { get; set; }
-        void SetRandomDestination();
-        //Vector3 Seek(float Speed);
-        //void Flee(float Speed);
-        bool GoToTarget(MovementSpeed Speed);
-		
-        void SetTarget(Actor TargetActor);
-		void SetTarget(float x, float y, float z);
-		void GeneratePath(); 
         void Update();
     }
 	public enum MovementSpeed { 

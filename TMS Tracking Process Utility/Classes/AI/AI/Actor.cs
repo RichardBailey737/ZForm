@@ -9,12 +9,12 @@ namespace BBDS.Classes.AI
 {
     public class Actor: IObjectLifeCycle, IMessageReceiver
     {
-        public Actor(IBodyProxy BodyProxyClass, ILocomotionProxy LocomotionProxyClass, ISensoryProxy SensoryProxyClass)
+        public Actor(IBodyProxy BodyProxyClass, ActorLocomotion LocomotionProxyClass, ISensoryProxy SensoryProxyClass, ActorStatistics StatsObject)
         {
-            
-            this.Statistics = new ActorStatistics();
+
+            this.Statistics = StatsObject;
             this.SensoryPerception = new ActorSensoryPerception(this, SensoryProxyClass);
-            this.Locomotion = new ActorLocomotion(this, LocomotionProxyClass);
+            this.Locomotion = LocomotionProxyClass;
             this.Body = new ActorBody(this, BodyProxyClass);
 
         }
@@ -24,35 +24,35 @@ namespace BBDS.Classes.AI
 		}
 
         public int ID { get; private set; }
-        public ActorIntention Intention { get; private set; }
-        public ActorBody Body { get; private set; }
-        public ActorLocomotion Locomotion { get; private set; }
-        public ActorSensoryPerception SensoryPerception { get; private set; }
-        public ActorStatistics Statistics { get; private set; }
+        public ActorIntention Intention { get; set; }
+        public ActorBody Body { get; set; }
+        public ActorLocomotion Locomotion { get; set; }
+        public ActorSensoryPerception SensoryPerception { get; set; }
+        public ActorStatistics Statistics { get; set; }
         
 
         #region ObjectLifeCyle
         public virtual void Initalize()
         {
-            if (Locomotion != null) Locomotion.LocomotionProxy.ParentActor = this;
+           
             ID = Globals.GenerateID();
             Intention = new ActorIntention(this);
             Intention.Initalize();
             Globals.Actors.Add(this);
             if (Body != null) Body.BodyProxy.Initalize();
-            if (Locomotion != null) Locomotion.LocomotionProxy.Initalize();
+            if (Locomotion != null) Locomotion.Initalize();
             if (SensoryPerception != null) SensoryPerception.SensoryPerceptionProxy.Initalize();
             
 
         }
         
-        public void Update()
+        public virtual void Update()
         {
 			Intention.Update();
-        	if (Locomotion != null) Locomotion.LocomotionProxy.Update();
+        	if (Locomotion != null) Locomotion.Update();
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             Intention.Dispose();
         }

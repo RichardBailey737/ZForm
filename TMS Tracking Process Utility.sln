@@ -3,6 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMS Tracking Process Utility", "TMS Tracking Process Utility\TMS Tracking Process Utility.csproj", "{3A673F49-4685-42AA-81A8-62CE6ACD4260}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Zombies!", "..\..\..\..\Desktop\Zombies!\Zombies!\Zombies!.vbproj", "{6301C7F3-95E3-4144-A795-68D41E014DF5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Journal", "Journal", "{29098779-1A35-490A-8C5E-F0DFD278FF34}"
+	ProjectSection(SolutionItems) = preProject
+		TMS Tracking Process Utility_VSJournal_rbailey.xml = TMS Tracking Process Utility_VSJournal_rbailey.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +20,10 @@ Global
 		{3A673F49-4685-42AA-81A8-62CE6ACD4260}.Debug|x86.Build.0 = Debug|x86
 		{3A673F49-4685-42AA-81A8-62CE6ACD4260}.Release|x86.ActiveCfg = Release|x86
 		{3A673F49-4685-42AA-81A8-62CE6ACD4260}.Release|x86.Build.0 = Release|x86
+		{6301C7F3-95E3-4144-A795-68D41E014DF5}.Debug|x86.ActiveCfg = Debug|x86
+		{6301C7F3-95E3-4144-A795-68D41E014DF5}.Debug|x86.Build.0 = Debug|x86
+		{6301C7F3-95E3-4144-A795-68D41E014DF5}.Release|x86.ActiveCfg = Release|x86
+		{6301C7F3-95E3-4144-A795-68D41E014DF5}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,16 +8,28 @@ namespace BBDS.Classes.AI
     /// <summary>
     /// Moves actor to new positions (collision resultion etc)
     /// </summary>
-    public class ActorLocomotion
+    public class ActorLocomotion : IObjectLifeCycle
     {
-        public ActorLocomotion(Actor Parent, ILocomotionProxy Proxy)
+        public ActorLocomotion(Actor Parent)
         {
             this.ParentActor = Parent;
-            this.LocomotionProxy = Proxy;
         }
 
-        public ILocomotionProxy LocomotionProxy { get; private set; }
-
         public Actor ParentActor { get; private set; }
+
+        public virtual void Initalize()
+        {
+            
+        }
+
+        public virtual void Update()
+        {
+           
+        }
+
+        public virtual  void Dispose()
+        {
+            
+        }
     }
 }
