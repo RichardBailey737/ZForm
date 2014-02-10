@@ -27,8 +27,13 @@ namespace TMS_Tracking_Process_Utility.Classes
             undeadStats.MovementSpeed = Utilities.Random1to10();
             undeadStats.Speed = Utilities.Random1to10();
             undeadStats.Strength = Utilities.Random1to10();
-            
 
+
+            Intention.Primary.ChangeTo(new ActionTransition
+            {
+                ToAction = Globals.Actions.MoveRandomly,
+                Reason = "Inital state"
+            });
         }
 
     }

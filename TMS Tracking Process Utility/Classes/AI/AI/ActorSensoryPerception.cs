@@ -8,20 +8,35 @@ namespace BBDS.Classes.AI
     /// <summary>
     /// Sound and vision queries
     /// </summary>
-    public class ActorSensoryPerception
+    public class ActorSensoryPerception : IObjectLifeCycle
     {
-        public ActorSensoryPerception(Actor ParentActor, ISensoryProxy Proxy)
+        public ActorSensoryPerception(Actor ParentActor)
         {
             this.ParentActor = ParentActor;
-            this.SensoryPerceptionProxy = Proxy;
+            //this.SensoryPerceptionProxy = Proxy;
         }
 
-        public ISensoryProxy SensoryPerceptionProxy { get; private set; }
+        //public ISensoryProxy SensoryPerceptionProxy { get; private set; }
 
       
 
         public Actor ParentActor { get; private set; }
 
+
+        public virtual void Initalize()
+        {
+            
+        }
+
+        public virtual void Update()
+        {
+            
+        }
+
+        public virtual void Dispose()
+        {
+            
+        }
     }
 
     public class SenseQuery

@@ -88,10 +88,6 @@
     <Compile Include="Classes\AI\ILocomotionProxy.cs" />
     <Compile Include="Classes\AI\IObjectLifeCycle.cs" />
     <Compile Include="Classes\AI\ISensoryProxy.cs" />
-    <None Include="Classes\AI\Proxies\LocomotionProxy.cs" />
-    <Compile Include="Classes\AI\Proxies\DummyBodyProxy.cs" />
-    <Compile Include="Classes\AI\Proxies\DummyLocomotionProxy.cs" />
-    <Compile Include="Classes\AI\Proxies\DummySensoryProxy.cs" />
     <Compile Include="Classes\AI\Technique.cs" />
     <Compile Include="Classes\AI\Techniques\LowPunch.cs" />
     <None Include="Classes\AI\Techniques\Sneak.cs" />
@@ -105,6 +101,7 @@
     <Compile Include="Classes\ZClasses\Camera.cs" />
     <Compile Include="Classes\ZClasses\Actors\CitizenStats.cs" />
     <Compile Include="Classes\ZClasses\CitizenLocomotion.cs" />
+    <Compile Include="Classes\ZClasses\CitizenSensoryPerception.cs" />
     <Compile Include="Classes\ZClasses\Constants\Constants.cs" />
     <Compile Include="Classes\ZClasses\Map.cs" />
     <Compile Include="Classes\ZClasses\MathStuff\Matrix2d.cs" />
