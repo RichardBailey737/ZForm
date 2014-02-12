@@ -109,7 +109,7 @@ namespace TMS_Tracking_Process_Utility
 
                 p1 = cam.CenterPoint(cam.TranslatePoint((a.Value.Statistics as Classes.CitizenStats).Location.ToPoint())).ToPoint();
                 buffer.FillEllipse(Brushes.Blue, (int)(p1.X - (scale / 2)), (int)(p1.Y - (scale / 2)), (int)(scale), (int)(scale));
-
+                //buffer.DrawRectangle(Pens.Green, 
             }
             if (GameProject.GameLoop.DeltaTime >0) buffer.DrawString((1000 / GameProject.GameLoop.DeltaTime).ToString(), drawFont, drawBrush, 0, 0);
             

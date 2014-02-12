@@ -16,7 +16,6 @@ namespace TMS_Tracking_Process_Utility.Classes
         public CitizenLocomotion(Actor Parent, Map map) : base(Parent)
         {
             Area = map;
-
         }
 
         public override void Initalize()
@@ -32,6 +31,9 @@ namespace TMS_Tracking_Process_Utility.Classes
 
         public double elapsedtime;
         public double pPoint;
+        public Rectangle CurrentPointBounds;
+        Point CurrentGridPoint;
+        Point PreviousGridPoint;
 
         public override void Update()
         {
@@ -44,6 +46,13 @@ namespace TMS_Tracking_Process_Utility.Classes
                 {
                     Stats.Location.X = path[pathpoint].X;
                     Stats.Location.Y = path[pathpoint].Y;
+                    if (CurrentPointBounds == null || !CurrentPointBounds.Contains(Stats.Location.ToPoint()))
+                    {
+                        PreviousGridPoint = CurrentGridPoint;
+                        CurrentGridPoint = new Point((int)Math.Ceiling(Stats.Location.X / Area.GridSize), (int)Math.Ceiling(Stats.Location.Y / Area.GridSize));
+                        CurrentPointBounds = new Rectangle(CurrentGridPoint.X, CurrentGridPoint.Y, (int)Area.GridSize, (int)Area.GridSize);
+                        Area.Grid.Move(PreviousGridPoint, CurrentGridPoint, this.ParentActor);
+                    }
                     if (pathpoint == path.Count - 1) path = null;
                 }
                 else if (pathpoint > path.Count)

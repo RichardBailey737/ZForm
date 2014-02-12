@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Classes\AI\AI\ActionBase.cs" />
     <Compile Include="Classes\AI\AI\ActionPool.cs" />
+    <Compile Include="Classes\MapGrid.cs" />
     <Compile Include="Classes\ZClasses\Actions\Human\Flee.cs" />
     <Compile Include="Classes\ZClasses\Actions\Human\MoveRandomly.cs" />
     <Compile Include="Classes\ZClasses\Actions\Human\Walk.cs" />

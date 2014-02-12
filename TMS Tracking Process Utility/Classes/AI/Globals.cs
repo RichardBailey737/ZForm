@@ -32,6 +32,9 @@ namespace BBDS.Classes
         public static float ActorMovementModifier = 10f;
         public static float ActorDrag = .8f;
 
+
+        
+
         public static string Output = "";
 		public static bool paused = false;
 		public static bool isPaused {

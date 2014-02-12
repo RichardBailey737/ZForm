@@ -14,6 +14,7 @@ namespace TMS_Tracking_Process_Utility.Classes
             this.Width = Width;
             this.Height = Height;
             Defaults();
+            Grid = new MapGrid(this);
         }
 
         public Map(int Width , int Height , int BuildingNumber , int CitizenNumber , int ZombiePerc) {
@@ -22,6 +23,7 @@ namespace TMS_Tracking_Process_Utility.Classes
             this.Width = Width;
             this.Height = Height;
             this.ZombiePercentage = ZombiePerc;
+            Grid = new MapGrid(this);
             Defaults();
         }
 
@@ -30,7 +32,10 @@ namespace TMS_Tracking_Process_Utility.Classes
             MaxBuidingSize = 50;
             MinBuildingSize = 15;
         }
-        
+
+        public MapGrid Grid;
+
+        public float GridSize = 10f;
         [Browsable(true), Description("The maximum height/width of a building."), Category("Generation Details")]
         public int MaxBuidingSize { get; set; }
         [Browsable(true), Description("Minimum height/width of a building"), Category("Generation Details")]
