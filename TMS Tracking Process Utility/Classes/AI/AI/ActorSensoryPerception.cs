@@ -8,7 +8,7 @@ namespace BBDS.Classes.AI
     /// <summary>
     /// Sound and vision queries
     /// </summary>
-    public class ActorSensoryPerception : IObjectLifeCycle
+    public class ActorSensoryPerception : IObjectLifeCycle, IMessageReceiver
     {
         public ActorSensoryPerception(Actor ParentActor)
         {
@@ -36,6 +36,11 @@ namespace BBDS.Classes.AI
         public virtual void Dispose()
         {
             
+        }
+
+        public virtual bool HandleMessage(Msg message)
+        {
+            return false;
         }
     }
 

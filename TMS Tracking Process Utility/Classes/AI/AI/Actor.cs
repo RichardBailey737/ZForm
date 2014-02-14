@@ -13,7 +13,7 @@ namespace BBDS.Classes.AI
         {
 
             this.Statistics = StatsObject;
-            this.SensoryPerception = new ActorSensoryPerception(this, SensoryProxyClass);
+            this.SensoryPerception = new ActorSensoryPerception(this);
             this.Locomotion = LocomotionProxyClass;
             this.Body = new ActorBody(this, BodyProxyClass);
 
@@ -41,7 +41,7 @@ namespace BBDS.Classes.AI
             Globals.Actors.Add(this);
             if (Body != null) Body.BodyProxy.Initalize();
             if (Locomotion != null) Locomotion.Initalize();
-            if (SensoryPerception != null) SensoryPerception.SensoryPerceptionProxy.Initalize();
+            if (SensoryPerception != null) SensoryPerception.Initalize();
             
 
         }

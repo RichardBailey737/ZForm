@@ -84,7 +84,7 @@ namespace TMS_Tracking_Process_Utility.Classes
 	        }
 	        catch (Exception ex)
 	        {
-                throw new Exception("Error generating path for citizen " + Stats.CitizenID.ToString() + ".  Moving from point " + Stats.Location.X + "," + Stats.Location.Y + " to " + PointToMoveTo.X + "," + PointToMoveTo.Y + " in area " + Area.Width + "," + Area.Height, ex);
+                throw new Exception("Error generating path for citizen " + ParentActor.ID.ToString() + ".  Moving from point " + Stats.Location.X + "," + Stats.Location.Y + " to " + PointToMoveTo.X + "," + PointToMoveTo.Y + " in area " + Area.Width + "," + Area.Height, ex);
 	        }
 
 
@@ -96,7 +96,7 @@ namespace TMS_Tracking_Process_Utility.Classes
              }
              else
              {
-                 Console.WriteLine("Could not find a path for citizen " + Stats.CitizenID.ToString());
+                 Console.WriteLine("Could not find a path for citizen " + ParentActor.ID.ToString());
              }
          }
 

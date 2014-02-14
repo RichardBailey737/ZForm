@@ -27,7 +27,7 @@ namespace TMS_Tracking_Process_Utility.Classes
          *  under teh point set
          * When MOVE is called, trigger the delegate.
          */
-        
+
         public void Add(System.Drawing.Point key, List<Actor> value)
         {
             GridData[key] = value;
@@ -119,13 +119,13 @@ namespace TMS_Tracking_Process_Utility.Classes
         {
             get
             {
-                tp = new Point(x, y);
-                if (GridData.ContainsKey(tp))
-                    return GridData[tp];
+               
+                if (GridData.ContainsKey(key))
+                    return GridData[key];
                 else
                     return null;
             }
-            private set
+             set
             {
                 GridData[key] = value;
             }
@@ -141,13 +141,13 @@ namespace TMS_Tracking_Process_Utility.Classes
                 else
                     return null;
             }
-            private set
+             set
             {
                  GridData[new Point(x, y)] = value;
             }
         }
 
-        private void Add(KeyValuePair<System.Drawing.Point, List<Actor>> item)
+        public void Add(KeyValuePair<System.Drawing.Point, List<Actor>> item)
         {
             GridData.Add(item.Key, item.Value);
         }
