@@ -19,7 +19,7 @@ namespace BBDS.Classes.AI
 
         private static void Dispatch(Msg msg)
         {
-            Globals.Actors[msg.Sender].HandleMessage(msg);
+            msg.Receiver.HandleMessage(msg);
         }
 
         public static void DispatchMessage(Msg msg)

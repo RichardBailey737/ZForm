@@ -32,7 +32,7 @@ namespace TMS_Tracking_Process_Utility.Classes
         public double elapsedtime;
         public double pPoint;
         public Rectangle CurrentPointBounds;
-        Point CurrentGridPoint;
+        public Point CurrentGridPoint;
         Point PreviousGridPoint;
 
         public override void Update()

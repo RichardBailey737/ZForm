@@ -96,6 +96,9 @@
     <None Include="Classes\AI\Techniques\Walk.cs" />
     <Compile Include="Classes\GameLoop.cs" />
     <Compile Include="Classes\Timer.cs" />
+    <Compile Include="Classes\ZClasses\Actions\Zombie\Attack.cs" />
+    <Compile Include="Classes\ZClasses\Actions\Zombie\ZDefaultState.cs" />
+    <Compile Include="Classes\ZClasses\Actors\CitizenBaseStats.cs" />
     <Compile Include="Classes\ZClasses\Actors\HumanCitizen.cs" />
     <Compile Include="Classes\ZClasses\Actors\UndeadCitizen.cs" />
     <Compile Include="Classes\ZClasses\Actors\UndeadStats.cs" />
@@ -140,9 +143,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\ZClasses\Actions\Zombie\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
       <Visible>False</Visible>

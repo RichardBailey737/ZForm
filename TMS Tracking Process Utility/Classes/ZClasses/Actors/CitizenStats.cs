@@ -9,7 +9,7 @@ using System.ComponentModel;
 namespace TMS_Tracking_Process_Utility.Classes
 {
 
-    public class CitizenStats : ActorStatistics
+    public class CitizenStats : CitizenBaseStats
     {
 
         /// <summary>
@@ -69,41 +69,6 @@ namespace TMS_Tracking_Process_Utility.Classes
 
 
         /// <summary>
-        /// Uses speed and action to return their current movement speed
-        /// </summary>
-        /// <value></value>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        [Browsable(true), Category("Static Properties"), Description("Their movement speed dictated by their speed value.  During normal times they move at 2 (unless they can't move that fast).  While fleeing they move at their top speed which is speed/2")]
-        public int MovementSpeed
-        {
-            get
-            {
-                if (_speed / 1 > 2)
-                {
-                    return _speed / 1;
-                }
-                else
-                {
-                    return 2;
-                }
-
-            }
-            set { _speed = value; }
-        }
-
-
-
-
-        private int _speed;
-
-        public int Speed
-        {
-            get { return _speed; }
-            set { _speed = value; }
-        }
-
-        /// <summary>
         /// 1 = Immenent Death, 5 = Hurt but could get better with medical attention, 10 = Fine
         /// </summary>
         /// <value></value>
@@ -131,16 +96,6 @@ namespace TMS_Tracking_Process_Utility.Classes
         public bool Alive { get; set; }
 
 
-        //Where are they?
-        [Browsable(false)]
-        public Structure InBuilding { get; set; }
-        [Browsable(false)]
-        public GeomLib.Point2D Location { get; set; }
-        [Browsable(false)]
-        public Map Area { get; set; }
-        [Browsable(false)]
-        public Hashtable BuildingHistory { get; set; }
-
         //What do they have?
         [Browsable(true), Category("Active Properties"), Description("Has a gun?")]
         public bool HasGun { get; set; }
@@ -165,15 +120,9 @@ namespace TMS_Tracking_Process_Utility.Classes
         [Browsable(true), Category("Active Properties"), Description("Amount of food they are carrying")]
         public int Food { get; set; }
 
-        [Browsable(true), Category("Active Properties"), Description("Citizen or Zombie they are looking at, fighting or running from.")]
-        public Actor Target { get; set; }
 
-        [Browsable(false)]
-        public Structure TargetBuilding { get; set; }
 
-        [Browsable(false)]
-        public GeomLib.Vector2D FacingVector { get; set; }
-
+        public short Cover { get; set; }
 
     }
 

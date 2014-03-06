@@ -62,6 +62,11 @@ namespace GeomLib
             return System.Math.Sqrt(X * X + Y * Y);
         }
 
+        public double LengthSquared()
+        {
+            return X * X + Y * Y;
+        }
+
         // find the angle between this vector and the parameter vector
         public double AngleTo(Vector2D Vec) {
             double AdotB = DotProduct(Vec);

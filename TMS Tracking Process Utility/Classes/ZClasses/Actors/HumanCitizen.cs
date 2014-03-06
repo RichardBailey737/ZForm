@@ -40,7 +40,7 @@ namespace TMS_Tracking_Process_Utility.Classes
             _with1.Relief = 0;
             _with1.Scared = 0;
             _with1.Hurt = 10;
-
+            _with1.Cover = 0;
 
             _with1.CombatAbility = Utilities.Random1to10Weighted(25);
             //Only 25% of the population has an above 5 combat ability

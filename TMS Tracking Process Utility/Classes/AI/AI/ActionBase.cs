@@ -28,7 +28,7 @@ namespace BBDS.Classes.AI
 
         public virtual System.Collections.Generic.IEnumerable<ActionTransition> Update()
         {
-            return null;
+            yield return null;
         }
 
         public virtual void End()

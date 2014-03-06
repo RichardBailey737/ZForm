@@ -74,7 +74,7 @@ namespace TMS_Tracking_Process_Utility.Classes
         /// <param name="ViewRange"></param>
         /// <param name="Origin"></param>
         /// <returns></returns>
-        public List<Actor> ActorsInRange(int ViewRange, Point Origin)
+        public List<Actor> ActorsInRange(float ViewRange, Point Origin)
         {
             List<Actor> rtrn = new List<Actor>();
             int range = (int)(Math.Floor(ViewRange/ParentMap.GridSize));
